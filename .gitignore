@@ -1,0 +1,32 @@
+node_modules/
+dist/
+.dist/
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+test-results/
+playwright-report/
+backend/data/nessie_live.json
+backend/data/player_progress.sqlite3*
+*.log
+backend/models/*.onnx
+backend/models/*.bin
+backend/models/*.part
+backend/models/qwen3-tts-*/
+public/mediapipe/
+public/models/*.task
+public/models/*.part
+
+# Secrets: never commit real keys (only the blank template is tracked)
+.env.*
+!.env.example
+
+# Local caches and OS files
+tsconfig.tsbuildinfo
+*.sqlite3
+*.sqlite3-*
+.DS_Store
+
+# The game ships its own copy in public/audio/
+/NoCopyright*.mp3

@@ -1,0 +1,444 @@
+{
+  "id": "case_02",
+  "number": "002",
+  "title": "Seven Minutes in the Dark",
+  "tagline": "The lights went out for seven minutes. When they came back, Ethan was gone — and so was $25,000.",
+  "location": "A LUXURY AIRBNB · POCONO MOUNTAINS, PA",
+  "briefing": "Ethan Walker, 22, vanished during a seven-minute blackout at a Pocono Mountains Airbnb. At 11:49 PM, $25,000 left his account. At 11:51 PM the front door was unlocked from inside. Four friends were in the house. Every one says they were somewhere else.",
+  "victim_business": {
+    "name": "Walker family"
+  },
+  "amount": 25000,
+  "date": "NOVEMBER 14, 2026",
+  "data_source": "Case file (fictional bank and smart-home records)",
+  "cross_pair": [
+    "oliver",
+    "zara"
+  ],
+  "board": {
+    "caption": "POCONO HOUSE · NOV 14",
+    "note": {
+      "stamp": "MISSING",
+      "amount": "$25,000",
+      "caption": "moved at 11:49 PM — and Ethan is gone"
+    }
+  },
+  "missing_person": {
+    "name": "Ethan Walker",
+    "role": "Missing · 22",
+    "portrait": "/portraits/ethan.jpg",
+    "note": "Last seen 11:50 PM"
+  },
+  "opening_letter": {
+    "sender": "Linda Walker",
+    "role": "Ethan’s mother",
+    "subject": "My son is missing.",
+    "paragraphs": [
+      "Ethan went to the Poconos for a reunion with his college friends. On Saturday night the power went out for seven minutes. When it came back on, he was gone.",
+      "His phone was still charging. His car was still outside. His wallet was on the living room floor. And at 11:49 PM, during the blackout, someone moved $25,000 out of his account.",
+      "Four of his friends were in that house: Noah, Maya, Oliver and Zara. Every one of them says they were somewhere else. At least one of them knows more than they’re saying.",
+      "The police think he walked away. I don’t. Please find out who he trusted — and who betrayed him."
+    ]
+  },
+  "suspects": [
+    {
+      "id": "noah",
+      "name": "Noah Bennett",
+      "role": "Best friend",
+      "portrait": "/portraits/noah.jpg",
+      "voice": "Puck",
+      "public_bio": "Ethan’s friend since high school. Loyal, sarcastic, quick to defend him.",
+      "opening": "Detective. I was in the kitchen making drinks when the lights went out. I didn’t see Ethan leave. Just… find him, okay?",
+      "private": {
+        "is_guilty": false,
+        "alibi": "In the kitchen from 11:45 PM to 11:53 PM; a kitchen camera caught him just before the blackout.",
+        "secret": "Borrowed $8,000 from Ethan months ago and still owes most of it. Ethan recently demanded it back, they argued, and Noah sent a $1,000 repayment three days ago.",
+        "red_herring_reason": "An unpaid debt gives him a believable money motive.",
+        "knows": [
+          "His glass near Ethan’s room was left there earlier in the evening, not during the blackout.",
+          "He noticed Ethan was missing at 11:58 PM; the group started searching at 12:08 AM."
+        ],
+        "will_send": [],
+        "personality": "Loyal, sarcastic, protective, a little impulsive. Defensive and embarrassed about money.",
+        "tells": {
+          "baseline_nervousness": 0.1,
+          "triggers": [
+            "money",
+            "loan",
+            "debt",
+            "owe",
+            "8,000",
+            "argue"
+          ]
+        },
+        "breaking_point": "Admits the loan and the argument when pressed about money."
+      },
+      "questions": [
+        "Where were you during the blackout?",
+        "Did you and Ethan ever argue about money?"
+      ]
+    },
+    {
+      "id": "maya",
+      "name": "Maya Rodriguez",
+      "role": "Ex-girlfriend",
+      "portrait": "/portraits/maya.jpg",
+      "voice": "Aoede",
+      "public_bio": "Dated Ethan until three months ago. Sharp, guarded, notices everything.",
+      "opening": "Ethan and I argued at dinner, but we worked it out. I went to my room before the power went out. I want him found, Detective.",
+      "private": {
+        "is_guilty": false,
+        "alibi": "Upstairs in her room from 11:43 PM to 11:54 PM; the hallway camera shows her going in.",
+        "secret": "At 10:20 PM Ethan privately told her someone at the reunion was exploiting him financially. At 11:32 PM he texted her: “If something happens tonight, check the account history.” She deleted the message because she didn’t want to be dragged into another fight.",
+        "red_herring_reason": "Her lie hides evidence, not a crime.",
+        "knows": [
+          "Ethan wanted to collect proof before saying who was exploiting him.",
+          "Ethan trusted her with confidential things even after they broke up."
+        ],
+        "will_send": [
+          "account_history"
+        ],
+        "personality": "Confident, emotionally guarded, observant, intelligent. Avoids talking about private conversations with Ethan.",
+        "tells": {
+          "baseline_nervousness": 0.08,
+          "triggers": [
+            "message",
+            "text",
+            "deleted",
+            "phone",
+            "account"
+          ]
+        },
+        "breaking_point": "Admits the deleted message when pressed about messages or warnings."
+      },
+      "questions": [
+        "What did you and Ethan argue about?",
+        "Did Ethan message you tonight?"
+      ]
+    },
+    {
+      "id": "oliver",
+      "name": "Oliver Hayes",
+      "role": "Roommate",
+      "portrait": "/portraits/oliver.jpg",
+      "voice": "Charon",
+      "public_bio": "Ethan’s roommate for two years. Calm, analytical, knows his way around any device.",
+      "opening": "I was asleep upstairs. The blackout woke me, but I didn’t hear anything unusual. Ethan’s my roommate — whatever you need, ask.",
+      "private": {
+        "is_guilty": true,
+        "alibi": "Claims he was asleep upstairs and the blackout woke him.",
+        "secret": "Triggered the prepared power cut at 11:47 PM, sent $25,000 from his own laptop using Ethan’s saved credentials at 11:49 PM, and unlocked the front door from inside at 11:51 PM so his accomplice Adrian Cole, posing as an investor, could lead Ethan to a car. Ethan is alive at an isolated rental near Lake Harmony.",
+        "red_herring_reason": "Points at Noah’s debt and Maya’s argument; suggests Ethan moved his own money.",
+        "knows": [
+          "He sent the transfer from his laptop",
+          "Adrian Cole drove Ethan to a rental near Lake Harmony",
+          "Ethan is alive"
+        ],
+        "will_send": [],
+        "personality": "Calm, analytical, technically fluent, manipulative under pressure. Gives detailed technical explanations to sound credible.",
+        "tells": {
+          "baseline_nervousness": 0.03,
+          "triggers": [
+            "laptop",
+            "device",
+            "11:49",
+            "transfer",
+            "door",
+            "lock",
+            "asleep"
+          ]
+        },
+        "breaking_point": "Only folds after both account_history and house_log have been presented to him, or both are found and Zara confronts him in cross-examination."
+      },
+      "questions": [
+        "Where were you during the blackout?",
+        "Who could get into Ethan’s bank account?"
+      ]
+    },
+    {
+      "id": "zara",
+      "name": "Zara Khan",
+      "role": "Party organizer",
+      "portrait": "/portraits/zara.jpg",
+      "voice": "Leda",
+      "public_bio": "Booked the house and planned the weekend. Social, organized, persuasive.",
+      "opening": "I was out on the patio, on the phone, when everything went dark. I booked this place — ask me anything about the house.",
+      "private": {
+        "is_guilty": false,
+        "alibi": "On the rear patio from 11:44 PM to 11:52 PM; her phone log backs part of it.",
+        "secret": "Ethan recently gave her an expensive watch. She hid it so Maya wouldn’t misunderstand their friendship.",
+        "red_herring_reason": "A hidden gift looks like a hidden relationship.",
+        "knows": [
+          "Ethan had been thinking about ending his business ties with Oliver."
+        ],
+        "will_send": [
+          "house_log"
+        ],
+        "personality": "Social, organized, persuasive, practical. Uncomfortable when asked how close she and Ethan are.",
+        "tells": {
+          "baseline_nervousness": 0.06,
+          "triggers": [
+            "gift",
+            "watch",
+            "relationship",
+            "close"
+          ]
+        },
+        "breaking_point": "Admits the gift when pressed about her relationship with Ethan."
+      },
+      "questions": [
+        "What did you hear during the blackout?",
+        "Can you get the house’s own records?"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "account_history",
+      "title": "Ethan’s account history",
+      "type": "Bank record",
+      "source": "maya",
+      "summary": "Ordinary spending — and one $25,000 transfer at 11:49 PM, in the dark.",
+      "keywords": [
+        "account",
+        "bank",
+        "transfer",
+        "history",
+        "money"
+      ],
+      "note": {
+        "text": "Ethan’s account: $25,000 sent to Ridgeline Capital Partners LLC at 11:49 PM, during the blackout.",
+        "source": "Bank record"
+      },
+      "business": "Ethan Walker · Personal checking",
+      "provenance": "fixture",
+      "notice": "Fictional account records written for this case.",
+      "transactions": [
+        {
+          "id": "ew-101",
+          "date": "2026-11-02",
+          "display_time": "2:14 PM",
+          "merchant": "Startup dividend · Kestrel Labs",
+          "amount": 32000,
+          "status": "credit"
+        },
+        {
+          "id": "ew-102",
+          "date": "2026-11-05",
+          "display_time": "10:03 AM",
+          "merchant": "Crypto exchange deposit",
+          "amount": -2300,
+          "status": "completed"
+        },
+        {
+          "id": "ew-103",
+          "date": "2026-11-08",
+          "display_time": "4:41 PM",
+          "merchant": "Technology purchase",
+          "amount": -1750,
+          "status": "completed"
+        },
+        {
+          "id": "ew-104",
+          "date": "2026-11-11",
+          "display_time": "6:20 PM",
+          "merchant": "Repayment from Noah Bennett",
+          "amount": 1000,
+          "status": "credit"
+        },
+        {
+          "id": "ew-105",
+          "date": "2026-11-12",
+          "display_time": "11:15 AM",
+          "merchant": "Airbnb booking (paid back to Zara Khan)",
+          "amount": -2400,
+          "status": "completed"
+        },
+        {
+          "id": "ew-106",
+          "date": "2026-11-14",
+          "display_time": "8:52 PM",
+          "merchant": "The Lodge at Pocono (dinner)",
+          "amount": -185,
+          "status": "completed"
+        },
+        {
+          "id": "ew-107",
+          "date": "2026-11-14",
+          "display_time": "11:49 PM",
+          "merchant": "Ridgeline Capital Partners LLC",
+          "amount": -25000,
+          "status": "completed",
+          "flagged": true
+        }
+      ],
+      "card": {
+        "kind": "table",
+        "topline": "ETHAN WALKER · CHECKING",
+        "title": "Account history",
+        "subheading": "NOV 11 – NOV 14",
+        "rows": [
+          [
+            "NOV 11",
+            "Noah B.",
+            "+$1,000"
+          ],
+          [
+            "NOV 14",
+            "Dinner",
+            "−$185"
+          ],
+          [
+            "NOV 14",
+            "11:49 PM",
+            "−$25,000"
+          ]
+        ],
+        "total_label": "IN THE DARK",
+        "total": "−$25,000",
+        "label": "Account history"
+      },
+      "period": "PERSONAL CHECKING · NOV 02–14, 2026",
+      "annotation": "11:49 PM. The lights were out."
+    },
+    {
+      "id": "house_log",
+      "title": "The house remembers",
+      "type": "Smart-home log",
+      "source": "zara",
+      "summary": "The host app logged the power cut, a laptop that never slept, and a door opened from inside.",
+      "keywords": [
+        "log",
+        "house",
+        "smart",
+        "lock",
+        "door",
+        "device",
+        "app"
+      ],
+      "note": {
+        "text": "House log: Oliver’s MacBook Pro was online through the blackout and unlocked the front door at 11:51 PM.",
+        "source": "Smart-home log"
+      },
+      "log": [
+        {
+          "time": "11:44 PM",
+          "device": "Patio door",
+          "event": "Opened (Zara’s phone on Wi-Fi, outdoor access point)"
+        },
+        {
+          "time": "11:46 PM",
+          "device": "Wi-Fi",
+          "event": "“Oliver’s MacBook Pro” active — uploading",
+          "flagged": true
+        },
+        {
+          "time": "11:47 PM",
+          "device": "Main panel",
+          "event": "Power lost — breaker interrupt"
+        },
+        {
+          "time": "11:49 PM",
+          "device": "Wi-Fi (battery backup)",
+          "event": "“Oliver’s MacBook Pro” — secure banking session",
+          "flagged": true
+        },
+        {
+          "time": "11:51 PM",
+          "device": "Front door lock",
+          "event": "Unlocked from inside — command from “Oliver’s MacBook Pro”",
+          "flagged": true
+        },
+        {
+          "time": "11:52 PM",
+          "device": "Driveway sensor",
+          "event": "Motion; vehicle leaving"
+        },
+        {
+          "time": "11:54 PM",
+          "device": "Main panel",
+          "event": "Power restored"
+        }
+      ],
+      "card": {
+        "kind": "table",
+        "topline": "POCONO HOUSE · HOST APP",
+        "title": "Smart-home log",
+        "subheading": "NOV 14 · BLACKOUT",
+        "rows": [
+          [
+            "11:47 PM",
+            "Power",
+            "LOST"
+          ],
+          [
+            "11:49 PM",
+            "Oliver’s Mac",
+            "ONLINE"
+          ],
+          [
+            "11:51 PM",
+            "Front door",
+            "UNLOCKED"
+          ]
+        ],
+        "total_label": "POWER BACK",
+        "total": "11:54 PM",
+        "label": "Smart-home log"
+      },
+      "period": "HOST APP · SAT NOV 14, 2026",
+      "annotation": "Asleep? His laptop wasn’t."
+    }
+  ],
+  "links": [
+    {
+      "from": "maya",
+      "to": "account_history",
+      "label": "“check the account history”",
+      "revealed_by": "account_history"
+    },
+    {
+      "from": "zara",
+      "to": "oliver",
+      "label": "his laptop never slept",
+      "revealed_by": "house_log"
+    }
+  ],
+  "hints": [
+    "Money moved at 11:49 PM, in the dark. Who in that house was really asleep?",
+    "Someone booked this house. Ask her what the house itself recorded.",
+    "Put the man who says he slept in the same room as the woman holding the house log."
+  ],
+  "truth_timeline": [
+    {
+      "t": "NOV 14 · 10:20 PM",
+      "title": "A quiet warning",
+      "event": "Ethan tells Maya someone close is exploiting him financially. At 11:32 PM he texts her: check the account history."
+    },
+    {
+      "t": "11:46 – 11:47 PM",
+      "title": "A fake investor, a planned blackout",
+      "event": "Oliver’s accomplice, Adrian Cole, messages Ethan posing as an investor. Oliver trips the prepared power interruption."
+    },
+    {
+      "t": "11:49 – 11:51 PM",
+      "title": "The money, then the door",
+      "event": "From his own laptop, Oliver sends $25,000 using Ethan’s saved credentials, then unlocks the front door from inside."
+    },
+    {
+      "t": "11:52 PM",
+      "title": "A car in the dark",
+      "event": "Ethan steps out to meet the “investor” and gets into Adrian’s car. On the patio, Zara hears it pull away."
+    },
+    {
+      "t": "THE TRUTH",
+      "title": "Everyone hid something",
+      "event": "Noah hid an unpaid loan. Maya deleted Ethan’s warning. Zara hid a gift. Only Oliver lied about the crime. Ethan is found alive at a rental near Lake Harmony."
+    }
+  ],
+  "cliffhanger": "Ethan’s safe. But my login… it’s been used before. Another account. Another name. Same 11:49.",
+  "next_mission": {
+    "title": "The Other Account",
+    "description": "Oliver’s credentials touched another unexplained transfer. A different victim. The investigation has only begun."
+  }
+}

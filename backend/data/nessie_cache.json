@@ -1,0 +1,11 @@
+{
+  "provenance": "fixture",
+  "notice": "Scripted demo data. Run the Nessie seed script with a valid key for API-sourced transaction IDs.",
+  "business": {"name": "Bluefin Bakery", "customer_id": null, "account_id": null},
+  "merchant": {"name": "Northshore Supply", "id": null},
+  "transactions": [
+    {"id": "demo-001", "date": "2026-03-03", "display_time": "11:52 PM", "merchant": "Northshore Supply", "amount": 16250, "status": "completed"},
+    {"id": "demo-002", "date": "2026-03-04", "display_time": "11:52 PM", "merchant": "Northshore Supply", "amount": 16250, "status": "completed"},
+    {"id": "demo-003", "date": "2026-03-05", "display_time": "11:52 PM", "merchant": "Northshore Supply", "amount": 16250, "status": "completed"}
+  ]
+}

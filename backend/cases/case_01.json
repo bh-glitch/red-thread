@@ -1,0 +1,346 @@
+{
+  "id": "case_01",
+  "number": "001",
+  "title": "The Midnight Vendor",
+  "briefing": "Bluefin Bakery is missing $48,750. Every payment went to ‘Northshore Supply’, a vendor that doesn’t exist. And every payment went out at exactly 11:52 PM.",
+  "victim_business": {
+    "name": "Bluefin Bakery",
+    "nessie_customer_id": null
+  },
+  "amount": 48750,
+  "date": "MARCH 06, 2026",
+  "suspects": [
+    {
+      "id": "sam",
+      "name": "Sam Okafor",
+      "role": "Bookkeeper",
+      "portrait": "/portraits/sam.jpg",
+      "voice": "Puck",
+      "public_bio": "Keeps the books. Knows where every dollar should be.",
+      "opening": "H-hello? Yes, this is Sam. I’ve been going over the accounts all morning. Something is very wrong.",
+      "private": {
+        "is_guilty": false,
+        "alibi": "At a job interview at a competing bakery last Tuesday, home at night.",
+        "secret": "Secretly interviewing for a job with a competitor.",
+        "red_herring_reason": "Afraid the bakery will fire him for job hunting.",
+        "knows": [
+          "Northshore payments all went out at 11:52 PM",
+          "His job interview was Tuesday afternoon"
+        ],
+        "will_send": [
+          "transaction_sheet"
+        ],
+        "personality": "Polite, anxious, helpful. Says ‘yes, sending it right away’.",
+        "tells": {
+          "baseline_nervousness": 0.25,
+          "triggers": [
+            "tuesday",
+            "interview",
+            "competitor"
+          ]
+        },
+        "breaking_point": "Admits the job interview when asked about Tuesday twice."
+      },
+      "questions": [
+        "Send me the transaction sheet.",
+        "Where were you on Tuesday?"
+      ]
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus Bell",
+      "role": "Delivery driver",
+      "portrait": "/portraits/marcus.jpg",
+      "voice": "Charon",
+      "public_bio": "First one in. Last one out. Usually.",
+      "opening": "Marcus here. Look, if this is about that night at the bakery… I can explain why I was there.",
+      "private": {
+        "is_guilty": false,
+        "alibi": "At the bakery late, trying to fix a dent in the delivery van.",
+        "secret": "Dented the delivery van and tried to fix it without telling the manager.",
+        "red_herring_reason": "Does not want to pay for the van repair.",
+        "knows": [
+          "Priya’s office light was on around midnight",
+          "He saw her silhouette through the office window",
+          "He was fixing the delivery van"
+        ],
+        "will_send": [
+          "eyewitness"
+        ],
+        "personality": "Direct, slightly defensive, warm underneath.",
+        "tells": {
+          "baseline_nervousness": 0.15,
+          "triggers": [
+            "van",
+            "dent",
+            "late",
+            "midnight"
+          ]
+        },
+        "breaking_point": "Admits the van damage when questioned about being there."
+      },
+      "questions": [
+        "What did you see that night?",
+        "Why did you stay after hours?"
+      ]
+    },
+    {
+      "id": "priya",
+      "name": "Priya Nair",
+      "role": "Operations manager",
+      "portrait": "/portraits/priya.jpg",
+      "voice": "Kore",
+      "public_bio": "Runs a tight ship. Nothing happens without her say-so.",
+      "opening": "Detective. I’m glad someone is taking this seriously. Sam handles the books; I’d start with him.",
+      "private": {
+        "is_guilty": true,
+        "alibi": "Claims she is always home asleep by 10 PM.",
+        "secret": "Created Northshore Supply as a shell vendor, then scheduled three payments from her login at 11:52 PM.",
+        "red_herring_reason": "Blames Sam to redirect attention.",
+        "knows": [
+          "She created Northshore",
+          "She was in the office at 11:52 PM",
+          "Another person approved the payments"
+        ],
+        "will_send": [],
+        "personality": "Composed, exact, subtly controlling. Blames Sam without sounding hostile.",
+        "tells": {
+          "baseline_nervousness": 0.02,
+          "triggers": [
+            "11:52",
+            "northshore",
+            "office",
+            "marcus",
+            "login"
+          ]
+        },
+        "breaking_point": "Only folds after both transaction_sheet and eyewitness have been presented to her, or both clues are unlocked and Marcus confronts her in cross-examination."
+      },
+      "questions": [
+        "Where were you at midnight?",
+        "What do you know about Northshore?"
+      ]
+    },
+    {
+      "id": "elena",
+      "name": "Elena Ruiz",
+      "role": "Bakery owner",
+      "portrait": "/portraits/elena.jpg",
+      "voice": "Aoede",
+      "public_bio": "Built the bakery. Has everything to lose.",
+      "opening": "Detective. Forty-eight thousand dollars… that’s months of payroll. Please tell me you can find it.",
+      "questions": [
+        "Who could approve a new vendor?",
+        "What are you keeping from the staff?"
+      ],
+      "private": {
+        "is_guilty": false,
+        "alibi": "At home with her daughter. Returned at 6 AM to open the bakery.",
+        "secret": "Used her own savings to cover overdue rent without telling the staff.",
+        "red_herring_reason": "Fears everyone will leave if they learn the bakery is struggling.",
+        "knows": [
+          "She covered the rent from personal savings",
+          "She does not recognize Northshore Supply",
+          "Sam reconciles the ledger, but operations manages vendor setup"
+        ],
+        "will_send": [],
+        "personality": "Tired, protective, occasionally sharp, afraid for her staff.",
+        "tells": {
+          "baseline_nervousness": 0.16,
+          "triggers": [
+            "rent",
+            "debt",
+            "payroll",
+            "savings",
+            "hiding"
+          ]
+        },
+        "breaking_point": "Admits the rent problem when asked what she is hiding."
+      }
+    },
+    {
+      "id": "theo",
+      "name": "Theo Park",
+      "role": "IT contractor",
+      "portrait": "/portraits/theo.jpg",
+      "voice": "Fenrir",
+      "public_bio": "Has the passwords. Keeps his own hours.",
+      "opening": "Theo. I maintain the network. Before you ask: having administrator access doesn’t mean I move money.",
+      "questions": [
+        "Were you logged in that night?",
+        "Could someone use another person’s login?"
+      ],
+      "private": {
+        "is_guilty": false,
+        "alibi": "Finished his remote maintenance session at 9:10 PM, then worked on a personal freelance project at home.",
+        "secret": "Used the bakery’s spare server for a freelance project without permission.",
+        "red_herring_reason": "Worries he will lose his contract for misusing the server.",
+        "knows": [
+          "His maintenance session ended at 9:10 PM",
+          "A network administrator cannot approve banking purchases",
+          "Staff are supposed to use individual banking credentials"
+        ],
+        "will_send": [],
+        "personality": "Dry, technically precise, a little defensive; becomes warmer once trusted.",
+        "tells": {
+          "baseline_nervousness": 0.1,
+          "triggers": [
+            "server",
+            "remote",
+            "password",
+            "login",
+            "permission"
+          ]
+        },
+        "breaking_point": "Admits the unauthorized freelance project if challenged about server use."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "transaction_sheet",
+      "title": "The transaction sheet",
+      "type": "Bank record",
+      "source": "nessie",
+      "locked_until": "asked_sam",
+      "summary": "Three payments. One vendor. Exactly the same time.",
+      "keywords": [
+        "sheet",
+        "transaction",
+        "bank",
+        "record",
+        "payment"
+      ],
+      "note": {
+        "text": "Three transfers to Northshore Supply. $48,750 total. Every one at 11:52 PM.",
+        "source": "Bank record"
+      },
+      "card": {
+        "kind": "table",
+        "topline": "BLUEFIN BAKERY",
+        "title": "Transaction record",
+        "subheading": "NORTHSHORE SUPPLY",
+        "rows": [
+          [
+            "MAR 03",
+            "11:52 PM",
+            "$16,250"
+          ],
+          [
+            "MAR 04",
+            "11:52 PM",
+            "$16,250"
+          ],
+          [
+            "MAR 05",
+            "11:52 PM",
+            "$16,250"
+          ]
+        ],
+        "total": "$48,750",
+        "label": "Bank record"
+      },
+      "period": "OPERATING ACCOUNT · MAR 03–05, 2026",
+      "annotation": "Same vendor. Same minute. Every time."
+    },
+    {
+      "id": "eyewitness",
+      "title": "A light after midnight",
+      "type": "Witness statement",
+      "source": "marcus",
+      "locked_until": "asked_marcus",
+      "summary": "Marcus saw a light in Priya’s office around midnight.",
+      "keywords": [
+        "witness",
+        "marcus",
+        "light",
+        "statement"
+      ],
+      "note": {
+        "text": "Marcus saw Priya’s office light on around midnight. Ask her where she was.",
+        "source": "Marcus Bell"
+      },
+      "statement": "The night I was there, Priya’s office light was on around midnight. I saw her silhouette through the window. I was outside fixing the van.",
+      "witness": "Marcus Bell · Delivery driver",
+      "card": {
+        "kind": "sticky",
+        "heading": "WITNESS ACCOUNT",
+        "quote": "“Priya’s light was on at midnight.”",
+        "by": "— Marcus Bell",
+        "label": "Witness statement"
+      },
+      "annotation": "An alibi worth checking."
+    }
+  ],
+  "links": [
+    {
+      "from": "marcus",
+      "to": "priya",
+      "label": "light on at midnight",
+      "revealed_by": "eyewitness"
+    },
+    {
+      "from": "sam",
+      "to": "transaction_sheet",
+      "label": "11:52 PM · every time",
+      "revealed_by": "transaction_sheet"
+    }
+  ],
+  "hints": [
+    "Money has a clock. Check when it moved.",
+    "Who was awake at 11:52?",
+    "Put the witness and the manager in the same room."
+  ],
+  "truth_timeline": [
+    {
+      "t": "FEB 27 · 4:16 PM",
+      "title": "A vendor with no business",
+      "event": "Priya creates Northshore Supply, a shell vendor with no deliveries and no real inventory."
+    },
+    {
+      "t": "MAR 03 · 11:52 PM",
+      "title": "The first payment",
+      "event": "$16,250 leaves Bluefin Bakery. Priya is in her office. Outside, Marcus is quietly repairing a dent in the delivery van."
+    },
+    {
+      "t": "MAR 04–05 · 11:52 PM",
+      "title": "Same minute. Same scheme.",
+      "event": "Two more payments of $16,250 follow. Three transactions total $48,750, all sent to Northshore Supply."
+    },
+    {
+      "t": "MAR 06 · 9:02 AM",
+      "title": "The books don’t balance",
+      "event": "Sam finds the missing money. His nervousness was about a job interview, not the theft. Marcus’s eyewitness account breaks Priya’s alibi. Elena was hiding rent trouble; Theo was concealing an unauthorized freelance project. Neither moved the missing money."
+    }
+  ],
+  "cliffhanger": "I only set up the vendor… someone else approved every payment.",
+  "next_mission": {
+    "title": "The Second Signature",
+    "description": "Three approvals. One unfamiliar signature. The trail doesn’t end at Bluefin Bakery."
+  },
+  "opening_letter": {
+    "sender": "Elena Ruiz",
+    "role": "Owner, Bluefin Bakery",
+    "subject": "The payroll money is gone.",
+    "paragraphs": [
+      "I need your help. $48,750 has disappeared from Bluefin Bakery’s accounts. That’s months of payroll for the people who keep this place alive.",
+      "Every payment went to “Northshore Supply.” We have no supplier by that name. And every transfer was made at exactly 11:52 PM.",
+      "I’ve given you five contacts who may know something. Speak to them. Ask for records. Find out where the money went—and who sent it.",
+      "Please find the truth before we lose the bakery."
+    ]
+  },
+  "location": "BLUEFIN BAKERY · PRINCETON, NJ",
+  "tagline": "$48,750 vanished from a small bakery. Every payment left at 11:52 PM.",
+  "cross_pair": [
+    "priya",
+    "marcus"
+  ],
+  "board": {
+    "caption": "BLUEFIN BAKERY",
+    "note": {
+      "stamp": "MISSING",
+      "amount": "$48,750",
+      "caption": "paid to “Northshore Supply”"
+    }
+  }
+}

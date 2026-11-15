@@ -1,0 +1,309 @@
+/* Zoomable layer: everything pinned to the cork. The frame, lamp, grain and
+   vignette stay put, so zooming feels like leaning in toward the board. */
+.board-camera {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  will-change: transform;
+}
+.cork-board.board-dragging {
+  cursor: grabbing;
+}
+
+/* Hover state for finger targeting mirrors the mouse hover. */
+.portrait-button.hand-hover .call-hover {
+  opacity: 1;
+}
+.suspect-card.hand-hover {
+  translate: 0 -8px;
+  transition: translate 0.2s;
+}
+.card-tools > button.hand-hover,
+.pinned-document.hand-hover,
+.witness-sticky.hand-hover {
+  outline: 2px solid #e8c47f;
+  outline-offset: 3px;
+}
+
+/* Finger hover inside calls and popups. */
+[role="dialog"] .hand-hover {
+  outline: 2px solid #e8c47f;
+  outline-offset: 2px;
+}
+/* Holding a pinch on the mic: the cursor glows red while you talk. */
+.hand-cursor[data-talking="true"] .hand-cursor-dot {
+  width: 16px;
+  height: 16px;
+  background: #e0644f;
+  box-shadow:
+    0 0 0 2px #1a140c,
+    0 0 22px 6px #e0644f99;
+}
+
+/* Cursor */
+/* Fixed to the viewport, above calls and popups (.modal-backdrop is z 40). */
+.hand-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 90;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+  --hold: 0;
+}
+.hand-cursor[data-visible="true"] {
+  opacity: 1;
+}
+.hand-cursor-dot,
+.hand-cursor-ring {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.hand-cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: #f3d79b;
+  box-shadow:
+    0 0 0 2px #1a140c,
+    0 0 18px 4px #f2c66f88;
+  transition:
+    width 0.12s,
+    height 0.12s;
+}
+.hand-cursor[data-target="true"] .hand-cursor-dot {
+  width: 18px;
+  height: 18px;
+}
+.hand-cursor[data-pinched="true"] .hand-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #ffefc4;
+}
+/* Ring fills while a pinch-hold (zoom in) or open palm (zoom out) charges. */
+.hand-cursor-ring {
+  width: 40px;
+  height: 40px;
+  background: conic-gradient(
+    #f3d79b calc(var(--hold) * 360deg),
+    transparent 0
+  );
+  -webkit-mask: radial-gradient(circle, transparent 15px, #000 16px);
+  mask: radial-gradient(circle, transparent 15px, #000 16px);
+  opacity: 0;
+}
+.hand-cursor[data-hold="click"] .hand-cursor-ring,
+.hand-cursor[data-hold="focus"] .hand-cursor-ring,
+.hand-cursor[data-hold="reset"] .hand-cursor-ring,
+.hand-cursor[data-hold="close"] .hand-cursor-ring {
+  opacity: 0.9;
+}
+/* Open palm in a call: a red ring fills, then the call hangs up. */
+.hand-cursor[data-hold="close"] .hand-cursor-ring {
+  background: conic-gradient(#e0644f calc(var(--hold) * 360deg), transparent 0);
+}
+.hand-cursor[data-hold="reset"] .hand-cursor-ring,
+.hand-cursor[data-hold="close"] .hand-cursor-ring {
+  width: 64px;
+  height: 64px;
+  -webkit-mask: radial-gradient(circle, transparent 27px, #000 28px);
+  mask: radial-gradient(circle, transparent 27px, #000 28px);
+}
+.hand-cursor.hand-tap .hand-cursor-dot {
+  animation: hand-tap 0.35s ease-out;
+}
+@keyframes hand-tap {
+  0% {
+    box-shadow:
+      0 0 0 2px #1a140c,
+      0 0 0 0 #f3d79bcc;
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px #1a140c,
+      0 0 0 26px #f3d79b00;
+  }
+}
+
+/* Camera preview */
+.hand-preview {
+  position: fixed;
+  right: 16px;
+  bottom: 110px;
+  z-index: 90;
+  width: 150px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid #b0976355;
+  border-radius: 3px;
+  background: #0d0b08;
+  box-shadow: 0 6px 18px #000a;
+  pointer-events: none;
+}
+.hand-preview-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  filter: grayscale(1) sepia(0.4) brightness(0.8);
+}
+.hand-preview.is-paused .hand-preview-video {
+  opacity: 0.35;
+}
+.hand-preview.is-talking {
+  border-color: #e0644f;
+  box-shadow:
+    0 0 0 1px #e0644f66,
+    0 6px 18px #000a;
+}
+/* Live speed readout: camera frames per second · time in the hand model. */
+.hand-preview-meter {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  font-family: ui-monospace, monospace;
+  font-size: 8px;
+  color: #e3cfa6;
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: #0d0b08cc;
+}
+.hand-preview-label {
+  line-height: 1.3;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 3px 6px;
+  font-family: var(--type);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  color: #e3cfa6;
+  background: #0d0b08cc;
+}
+
+/* Underbar controls */
+.board-zoom-hint {
+  font-family: var(--type);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+/* Hand control buttons: big enough to read and hit. */
+.board-underbar > .hand-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hand-controls > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--type);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  padding: 8px 14px;
+  border-radius: 3px;
+  border: 1px solid #b0976355;
+  background: #b79a5812;
+  color: #d8c39b;
+  cursor: pointer;
+}
+.hand-controls > button:hover {
+  border-color: #d8b77a99;
+  background: #b79a5824;
+}
+.hand-controls > button.hand-toggle.is-on {
+  color: #1a140c;
+  background: #e8c47f;
+  border-color: #e8c47f;
+}
+.hand-controls > .hand-guide-button {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+@media (max-width: 720px) {
+  .board-zoom-hint {
+    display: none !important;
+  }
+}
+
+/* Peace-sign click: a bright ring loads for 1 s around the dot. */
+.hand-cursor[data-hold="click"] .hand-cursor-ring {
+  width: 46px;
+  height: 46px;
+  background: conic-gradient(#ffe3a3 calc(var(--hold) * 360deg), #ffe3a322 0);
+  -webkit-mask: radial-gradient(circle, transparent 17px, #000 18px);
+  mask: radial-gradient(circle, transparent 17px, #000 18px);
+}
+
+/* The whole suspect card is clickable: lift + "Call" overlay anywhere on it. */
+.suspect-card {
+  cursor: pointer;
+}
+.suspect-card:hover .call-hover,
+.suspect-card.hand-hover .call-hover {
+  opacity: 1;
+}
+
+/* Hand guide popup */
+.hand-guide {
+  max-width: 620px;
+}
+.hand-guide-list {
+  list-style: none;
+  margin: 18px 0 10px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.hand-guide-list li {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+.hand-guide-sign {
+  font-size: 30px;
+  line-height: 44px;
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  border-radius: 50%;
+  background: #b79a5815;
+  border: 1px solid #b0976333;
+}
+.hand-guide-list strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+.hand-guide-list p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+.hand-guide-tip {
+  font-size: 12px;
+  opacity: 0.75;
+}
+.hand-guide-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.hand-guide-actions label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  opacity: 0.8;
+  cursor: pointer;
+}
